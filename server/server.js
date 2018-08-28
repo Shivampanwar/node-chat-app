@@ -8,6 +8,6 @@ const port=process.env.PORT||3000;//done for heroku
 console.log(publicPath)
 
 app.use(express.static(publicPath))
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log(`Server is up on port ${port}`)
 })
