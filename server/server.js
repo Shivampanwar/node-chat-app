@@ -20,16 +20,20 @@ io.on('connection',(socket)=>{
 //    socket.on('createEmail',(newEmail)=>{
 //        console.log("createEmail",newEmail)
 //    })
-   socket.on('createMessage',(createmessage)=>{
-       console.log("createMessage",createmessage)
-
-   })
+   socket.on('createMessage',(message)=>{
+       console.log("createMessage",message)
+       io.emit('newMessage',{
+           from:message.from,
+           text:message.text,
+           createdAt:new Date().getTime()
+       })
+    })
   
-   socket.emit('newMessage',{
-       from:"Shivam2gmail.com",
-       text:"Hii there buddy",
-       createdAt:"Today afternoon"
-   })
+//    socket.emit('newMessage',{
+//        from:"Shivam2gmail.com",
+//        text:"Hii there buddy",
+//        createdAt:"Today afternoon"
+//    })
 })
 console.log('JJk')
 app.use(express.static(publicPath))
